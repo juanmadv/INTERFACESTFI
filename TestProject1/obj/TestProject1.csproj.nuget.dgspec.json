@@ -1,0 +1,123 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\TestProject1\\TestProject1.csproj": {}
+  },
+  "projects": {
+    "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\BE\\BE.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\BE\\BE.csproj",
+        "projectName": "BE",
+        "projectPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\BE\\BE.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\DAL\\DAL.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\DAL\\DAL.csproj",
+        "projectName": "DAL",
+        "projectPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\DAL\\DAL.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\BE\\BE.csproj": {
+                "projectPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\BE\\BE.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\Security\\SEC.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\Security\\SEC.csproj",
+        "projectName": "SEC",
+        "projectPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\Security\\SEC.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\BE\\BE.csproj": {
+                "projectPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\BE\\BE.csproj"
+              },
+              "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\DAL\\DAL.csproj": {
+                "projectPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\DAL\\DAL.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\TestProject1\\TestProject1.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\TestProject1\\TestProject1.csproj",
+        "projectName": "TestProject1",
+        "projectPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\TestProject1\\TestProject1.csproj",
+        "packagesPath": "C:\\Users\\juanm\\.nuget\\packages\\",
+        "outputPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\TestProject1\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\juanm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "targetAlias": "net472",
+            "projectReferences": {
+              "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\DAL\\DAL.csproj": {
+                "projectPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\DAL\\DAL.csproj"
+              },
+              "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\Security\\SEC.csproj": {
+                "projectPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\Security\\SEC.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "targetAlias": "net472",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.5.0, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.12.0, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[3.16.1, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
