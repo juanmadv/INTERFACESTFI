@@ -23,44 +23,65 @@ namespace Security
         public Patente Login(User puser, string pass)
         {
             this._userAuth = puser;
+
+            if (puser.Email.Equals("ADMIN") && puser.Pass.Equals("ADMIN"))
+                /*logica de login*/
+                
+                return new Patente("Administracion", "Administracion general de la aplicacion");
+            else
+                return null;
             
-            /*logica de login*/
-            return null;
 
         }
 
-        public void inicio (string pserver, string puser, string ppwd)
+        public void IniciarBase (string pserver, string puser, string ppwd)
         {
 
             try
             {
                 Acceso.CrearAcceso(pserver, puser, ppwd);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }                       
 
         }
-        public string inicio()
+        public bool Inicio()
         {
-            string check = null;
+            bool check = false;
             try
-            {
-                //return EncryptorMan.Desencrypt();
-              check =   Acceso.ManageConnection();
+            {                
+              check =   Acceso.CheckAccess();
             }
-            catch (Exception )
+            catch (Exception ex )
             {
 
-                throw;
+                throw ex; 
                 
             }
             return check;
 
         }
 
+        public bool StartBkUp(string path1, string path2)
+        {
+           
+            try
+            {
+                Acceso.ExecuteEscalar("SP_BACKUP",new System.Data.SqlClient.SqlParameter("@DIR1", path1),new System.Data.SqlClient.SqlParameter("@DIR2", path2));
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+                return false;
+            }
+            
+
+        }
 
     }
 }

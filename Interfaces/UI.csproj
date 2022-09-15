@@ -43,7 +43,11 @@
       <HintPath>packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -129,7 +133,9 @@
     <EmbeddedResource Include="UIConexionBD.resx">
       <DependentUpon>UIConexionBD.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BE.Constantes.Constantes.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -141,9 +147,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\BE\BE.csproj">
+      <Project>{643d22a0-dd3c-4d82-bba0-573afcd8e2a5}</Project>
+      <Name>BE</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{6371cd1f-5a8b-4430-9f76-60d14eb060d7}</Project>
       <Name>DAL</Name>
@@ -151,6 +158,10 @@
     <ProjectReference Include="..\Security\SEC.csproj">
       <Project>{e89f0ff8-a685-44a9-b4da-d9f6a6119051}</Project>
       <Name>SEC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Util\Util.csproj">
+      <Project>{33bf9d80-9c83-4725-b4c5-1648dfb9bc19}</Project>
+      <Name>Util</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

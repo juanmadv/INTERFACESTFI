@@ -25,24 +25,48 @@ namespace DAL
         public static string Desencrypt()
         {
             Configuration configuration = GetConfiguration();
-
+            ConnectionStringsSection section = GetStringSection(configuration);
+            string CONN = String.Empty;
             try
-            {
+            {  bool checkeo = false;
 
-                if ((!(GetStringSection(configuration).ElementInformation.IsLocked)) && (!(GetStringSection(configuration).SectionInformation.IsLocked)))
+                if ((!(section.ElementInformation.IsLocked)) && (!(section.SectionInformation.IsLocked)))
                 {
-                    if (GetStringSection(configuration).SectionInformation.IsProtected) //encrypt is true so encrypt
+                    if (section.SectionInformation.IsProtected) //encrypt is true so encrypt
                     {
                         // decrypt the file. 
-                        GetStringSection(configuration).SectionInformation.UnprotectSection();
+                       section.SectionInformation.UnprotectSection();
                     }
                     //GetStringSection(configuration).ConnectionStrings.Add(new ConnectionStringSettings("nueva conexion", "CONNSTRINGNUEVA"));
-                    //GetStringSection(configuration).SectionInformation.ForceSave = true;
+                    //section.SectionInformation.ForceSave = true;
                     //configuration.Save();
                 }
+                //ConfigurationManager.RefreshSection("connectionStrings");
 
 
-                return GetStringSection(configuration).ConnectionStrings[2].ConnectionString;
+                if (section.ConnectionStrings.Count > 0)
+
+                {
+                    foreach (ConnectionStringSettings item in section.ConnectionStrings)
+                    {
+                        if (item.Name.Equals(Constantes.NOMBRECONEXION))
+                        {
+                            CONN = item.ConnectionString;
+                            checkeo = true;
+                        }
+                    }
+                }
+                if (!checkeo)
+                {
+                    section.ConnectionStrings.Add(new ConnectionStringSettings(Constantes.NOMBRECONEXION, "conexiondefault"));
+                    section.SectionInformation.ForceSave = true;
+
+                    configuration.Save();
+                   // Desencrypt();
+                }
+                    
+                    return CONN;
+               
             }
 
             catch (Exception e2)
@@ -60,20 +84,39 @@ namespace DAL
         /// fuente: https://docs.microsoft.com/en-us/dotnet/api/system.configuration.sectioninformation.protectsection?view=dotnet-plat-ext-6.0
         /// https://docs.microsoft.com/en-us/answers/questions/273839/how-to-encrypt-connection-string-in-appconfig.html
         /// </summary>
-        public static void EncryptAndSave(string pConectionString)
+        public static void EncryptAndSave(string pConnectionString)
         {
             try
             {
 
                 Configuration configuration = GetConfiguration();
+                ConnectionStringsSection  section = GetStringSection(configuration);
+                bool checkeo = false;
+                if (section.ConnectionStrings.Count > 0)
 
+                    foreach (ConnectionStringSettings item in section.ConnectionStrings)
+                    {
+                        if (item.Name.Equals(Constantes.NOMBRECONEXION))
+                        {
+                            item.ConnectionString = pConnectionString;
+                            checkeo = true;
+                        }
+                    }
 
-                if ((!(GetStringSection(configuration).ElementInformation.IsLocked)) && (!(GetStringSection(configuration).SectionInformation.IsLocked)))
+                else if (!checkeo)
                 {
-                    if ((!GetStringSection(configuration).SectionInformation.IsProtected))
+                    section.ConnectionStrings.Add(new ConnectionStringSettings(Constantes.NOMBRECONEXION, pConnectionString)); section.SectionInformation.ForceSave = true;
+
+                    configuration.Save();
+                }
+
+
+                if ((!(section.ElementInformation.IsLocked)) && (!(section.SectionInformation.IsLocked)))
+                {
+                    if ((!section.SectionInformation.IsProtected))
                     {
                         // encriptar el archivo
-                        GetStringSection(configuration).SectionInformation.ProtectSection(Constantes.PROTECTIONPROVIDER);
+                       section.SectionInformation.ProtectSection(Constantes.PROTECTIONPROVIDER);
                     }
                     #region verificar si graba ok 
                     /* se prueba para ver si grabo ok */
@@ -86,22 +129,19 @@ namespace DAL
                     /* FIN se prueba para ver si grabo ok */
                     #endregion
 
-                    GetStringSection(configuration).ConnectionStrings.RemoveAt(2);
-                    //el comando clear agrega </clear> en el .config hace fallar la aplicacion.
-                    //GetStringSection(configuration).ConnectionStrings.Clear();
-                    GetStringSection(configuration).ConnectionStrings.Add(new ConnectionStringSettings(Constantes.NOMBRECONEXION, pConectionString));
-                    GetStringSection(configuration).SectionInformation.ForceSave = true;
-
-                    //ConfigurationManager.RefreshSection(Constantes.CONNECTIONSTRING);
+                    section.SectionInformation.ForceSave = true;
+                    
                     configuration.Save();
+                    //ConfigurationManager.GetSection("connectionStrings").
+                    
 
-                    //ConfigurationManager.RefreshSection(Constantes.CONNECTIONSTRING);
-                    //GetConfiguration().GetSection(Constantes.CONNECTIONSTRING).ToString());
-                    
-                    
 
                 }
 
+            }
+            catch   (System.Configuration.ConfigurationException CONFEX)
+            {
+                throw new Exception("NO SE PUEDE DESENCRIPTAR LA CLAVE");
             }
             catch (Exception e2)
             {
@@ -116,6 +156,13 @@ namespace DAL
         private static ConnectionStringsSection GetStringSection(Configuration pconfig)
         {
 
+           
+            ConfigurationSection cfs = pconfig.GetSection(Constantes.CONNECTIONSTRING) as ConnectionStringsSection;
+            if (cfs == null)
+            { pconfig.Sections.Remove(Constantes.CONNECTIONSTRING);
+                
+                
+            }
             return pconfig.GetSection(Constantes.CONNECTIONSTRING) as ConnectionStringsSection;
         }
 

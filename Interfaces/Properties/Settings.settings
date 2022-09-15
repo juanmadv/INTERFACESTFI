@@ -1,7 +1,12 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Interfaces.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="StyleJuanma" Type="MetroFramework.MetroColorStyle" Scope="Application">
+      <Value Profile="(Default)">Silver</Value>
+    </Setting>
+    <Setting Name="ThemeJuanma" Type="MetroFramework.MetroThemeStyle" Scope="Application">
+      <Value Profile="(Default)">Dark</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

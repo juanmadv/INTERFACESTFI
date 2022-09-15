@@ -7,11 +7,21 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class Patente 
+    public class Patente : IPersistible
     {
+        #region Constructores
+        public Patente(string pnombre, string pdescrip)
+        {
+            Nombre = pnombre;
+            Descripcion = pdescrip;
 
+        }
+
+        #endregion
+        public int Id { get; set; }
         public string Nombre{ get; set; }
         public string Descripcion { get; set; }
+
 
     }
 }

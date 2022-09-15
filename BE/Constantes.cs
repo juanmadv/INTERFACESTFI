@@ -14,7 +14,7 @@ namespace BE
             #region Constantes para Encriptacion de configuracion 
             public const string CONNECTIONSTRING = "connectionStrings";
             public const string PROTECTIONPROVIDER = "DataProtectionConfigurationProvider";
-            public const string BASE = "InfoGeo";
+            public const string BASE = "GestionBarrio";
             public const string NOMBRECONEXION= "ConexionBD";
 
 
