@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BE;
 using DAL;
+using BLL;
 namespace Security
 {
     public class ProxyAuth
@@ -16,13 +17,34 @@ namespace Security
         #region Variables
 
         private User _userAuth;
+        private BLBitacora bitacora;
 
+
+        private BLBitacora GetBitacora()
+        {
+            if (bitacora == null)
+            { bitacora = new BLBitacora(); 
+            }
+
+            return bitacora;
+        }
         #endregion
 
 
-        public Patente Login(User puser, string pass)
+        public Patente Login(User puser, string pass, string pHost)
         {
             this._userAuth = puser;
+
+            try
+            {
+                GetBitacora().Grabar(_userAuth, 1, "intento de login", DateTime.Now, pHost);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
 
             if (puser.Email.Equals("ADMIN") && puser.Pass.Equals("ADMIN"))
                 /*logica de login*/
@@ -48,20 +70,23 @@ namespace Security
             }                       
 
         }
-        public bool Inicio()
+        public static bool InicioAsync()
         {
             bool check = false;
+            
             try
             {                
-              check =   Acceso.CheckAccess();
+               check = Acceso.CheckAccess();
+                
+                return check;
+                
             }
             catch (Exception ex )
             {
 
                 throw ex; 
                 
-            }
-            return check;
+            }            
 
         }
 
@@ -81,6 +106,12 @@ namespace Security
             }
             
 
+        }
+
+
+        public List<Bitacora> ListarBitacora()
+        {
+            return GetBitacora().GetAll();
         }
 
     }

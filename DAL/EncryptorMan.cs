@@ -38,8 +38,8 @@ namespace DAL
                        section.SectionInformation.UnprotectSection();
                     }
                     //GetStringSection(configuration).ConnectionStrings.Add(new ConnectionStringSettings("nueva conexion", "CONNSTRINGNUEVA"));
-                    //section.SectionInformation.ForceSave = true;
-                    //configuration.Save();
+                   // section.SectionInformation.ForceSave = true;
+                  //  configuration.Save();
                 }
                 //ConfigurationManager.RefreshSection("connectionStrings");
 
@@ -84,7 +84,7 @@ namespace DAL
         /// fuente: https://docs.microsoft.com/en-us/dotnet/api/system.configuration.sectioninformation.protectsection?view=dotnet-plat-ext-6.0
         /// https://docs.microsoft.com/en-us/answers/questions/273839/how-to-encrypt-connection-string-in-appconfig.html
         /// </summary>
-        public static void EncryptAndSave(string pConnectionString)
+        public static string EncryptAndSave(string pConnectionString)
         {
             try
             {
@@ -99,13 +99,16 @@ namespace DAL
                         if (item.Name.Equals(Constantes.NOMBRECONEXION))
                         {
                             item.ConnectionString = pConnectionString;
+                            //seteo el connection string para no volver a iterar luego
+
                             checkeo = true;
                         }
                     }
 
                 else if (!checkeo)
                 {
-                    section.ConnectionStrings.Add(new ConnectionStringSettings(Constantes.NOMBRECONEXION, pConnectionString)); section.SectionInformation.ForceSave = true;
+                    section.ConnectionStrings.Add(new ConnectionStringSettings(Constantes.NOMBRECONEXION, pConnectionString));
+                    section.SectionInformation.ForceSave = true;
 
                     configuration.Save();
                 }
@@ -141,13 +144,22 @@ namespace DAL
             }
             catch   (System.Configuration.ConfigurationException CONFEX)
             {
-                throw new Exception("NO SE PUEDE DESENCRIPTAR LA CLAVE");
+                Configuration configuration = GetConfiguration();
+                ConnectionStringsSection section = GetStringSection(configuration);
+                section.ConnectionStrings.Add(new ConnectionStringSettings(Constantes.NOMBRECONEXION, pConnectionString));
+                section.SectionInformation.ForceSave = true;
+
+                configuration.Save();
+
+                throw new Exception("NO SE PUEDE DESENCRIPTAR LA CLAVE" );
             }
             catch (Exception e2)
             {
 
                 throw e2;
             }
+
+            return pConnectionString;
 
         }
 

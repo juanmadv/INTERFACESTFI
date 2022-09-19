@@ -8,5 +8,6 @@ namespace BE
 {
     public interface IPersistible
     {
+          
     }
 }

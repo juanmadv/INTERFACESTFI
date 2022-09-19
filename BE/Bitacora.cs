@@ -8,39 +8,47 @@ using Util;
 
 namespace BE
 {
-    public class Bitacora:IPersistible
+    public class Bitacora : IPersistible
     {
         #region Constructor
         public Bitacora() { }
-        public Bitacora(User pusuario, int criticidad, string descripcion, DateTime pfecha)
+        public Bitacora(User pusuario, int pcriticidad, string pdescripcion, DateTime pfecha, string phost)
         {
-            IdUSer = pusuario.Id;
+            //IdUSer = pusuario.Id;
+            IdUSer = 1;
             Usuario = pusuario;
-            Criticidad = criticidad;
-            Descripcion = descripcion;
+            Criticidad = pcriticidad;
+            Descripcion = pdescripcion;
             Fecha = pfecha;
+            this.Host = phost;
         }
         #endregion
 
         #region Atributos
-        //[Columna("Id")]        
+        [Columna("Id")]
         public int Id { get; set; }
-        [Columna("IdUser")]
-        public int IdUSer { get; private set; }
+        [Columna("Descripcion")]
+        public string Descripcion { get; set; }
 
         public User Usuario { get; set; }
 
         [Columna("Criticidad")]
         public int Criticidad { get; set; }
-        [Columna("Descripcion")]
-        public string Descripcion{ get; set; }
+
         [Columna("Fecha")]
         public DateTime Fecha { get; set; }
 
+        [Columna("IdUser")]
+        public int IdUSer { get; private set; }
+        
+        
+        
         [Columna("DVH")]
-        public int DVH{ get; set; }
-        #endregion
+        public int DVH { get; set; }
+        [Columna("Host")]
 
+        public String Host { get; set; }
+        #endregion
 
         override public string ToString()
         {

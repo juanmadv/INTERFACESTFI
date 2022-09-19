@@ -17,8 +17,8 @@ namespace DAL
         {
             List<SqlParameter> mparametros = new List<SqlParameter>();
 
-            _reflex.GetAllPropertys(po).ForEach(z => mparametros.Add(new SqlParameter(z.Name, z.GetValue(po))));
-
+            _reflex.GetAllPropertys(po).Where(x => x.Name != "Id").ToList().ForEach(z => mparametros.Add(new SqlParameter(z.Name, z.GetValue(po))));
+            
 
             return mparametros;
         }

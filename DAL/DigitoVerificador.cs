@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL
 {
-   public  class DigitoVerificador
+    public  class DigitoVerificador
     {
 
         /// <summary>
@@ -21,12 +18,13 @@ namespace DAL
             int loop = 1;
             int resultado = 0;
             byte[] b = Encoding.ASCII.GetBytes(pcadena);
+           
             foreach (var item in b)
-            {                
-                resultado += item * loop;       //falta multiplicar por posicion         
+            {
+                resultado += item; // * loop;       //Multiplicar por posicion         
                 loop++;
             }
-            
+            Console.WriteLine(String.Format("Parcial de cadena:\n {0} Resultado de esta cadena \n: {1} ", pcadena, resultado.ToString()));
             return resultado;
             
         }
@@ -34,17 +32,26 @@ namespace DAL
         public static int CalcDVHRow(DataRow pdr)
         {
             int acumulado = 0;
-            int parcial = 0;
+            int digActual = 0;
             string cadena = string.Empty;
+            //se valida si tiene datos el dvh y se pisa ya habiendolo acumulado para comparar
+            if (int.TryParse(pdr["DVH"].ToString(), out digActual))
+                pdr["DVH"] = 0;
+            
+            Console.WriteLine("OBTUVE EL DVH: \n :" + digActual); 
             
             for (int i = 0; i < pdr.ItemArray.Length; i++)
-            {
-                cadena += pdr[i].ToString();
-                Console.WriteLine("ROW cadena:   \n" + cadena + "\n Parcial de cadena:  " + parcial.ToString() );
+            {                   
+                 cadena += pdr[i].ToString();                                 
             }
+            cadena = cadena.Remove(cadena.Length - 1);
             acumulado = CalcDVHColumn(cadena);
+            if(acumulado != digActual)
+            {
+                Console.WriteLine("ERROR DE DVH en ID: \n" + pdr[0].ToString() );
+            }
 
-            Console.WriteLine("Resultado Row \n"+  acumulado.ToString());
+            Console.WriteLine("Cadena:\n" + cadena + " \n Resultado Row \n" +  acumulado.ToString());
             return acumulado;
 
         }
@@ -62,13 +69,18 @@ namespace DAL
         }
 
 
-        public static int prueba(string ptable)
+        internal static int Prueba(IRepository ptable)
         {
             int acumulado = 0;
 
             try
             {
-               DataTable dt = Acceso.ExecuteReader("select * from Bitacora;");
+               DataTable dt = Acceso.ExecuteReader(String.Format("select * from {};" ,ptable.Estructura.Tabla));
+                DataTable dt2 = dt.Copy();
+
+                //limpio digitos ya calculados para verificar
+                ClearDVH(dt2);
+                
                 if (dt.Rows.Count>0)
                     acumulado = CalcDVHTable(dt);
             }
@@ -79,6 +91,15 @@ namespace DAL
             return 0;
         }
 
+
+        private static void ClearDVH(DataTable mdt)
+        {
+            foreach (DataRow item in mdt.Rows)
+            {
+                item["DVH"] = "";
+            }
+
+        }
         
 
 }

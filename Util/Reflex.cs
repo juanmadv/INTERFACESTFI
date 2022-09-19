@@ -33,8 +33,8 @@ namespace Util
         {
             string cadena = string.Empty;
             try
-            {
-                po.GetType().GetProperties().Where(x => x.GetCustomAttributes(typeof(ColumnaAttribute)).Any()).ToList().ForEach(z => cadena += z.GetValue(po));
+            {   //se filtra tambien por DVH ya que sino se asigna automaticamente el valor 0
+                po.GetType().GetProperties().Where(x => x.GetCustomAttributes(typeof(ColumnaAttribute)).Any()).Where(x => x.Name != "DVH" ).ToList().ForEach(z => cadena += z.GetValue(po));
 
             }
             catch (Exception ex)

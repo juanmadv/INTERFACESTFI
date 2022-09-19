@@ -27,7 +27,10 @@ namespace DAL
         {
             try
             {
-                Conexion.ConnectionString = EncryptorMan.Desencrypt();
+                //if (Conexion.ConnectionString == null)
+                //{ 
+                    Conexion.ConnectionString = EncryptorMan.Desencrypt();
+                //}
 
                 return Conexion.ConnectionString;
             }
@@ -72,11 +75,12 @@ namespace DAL
         }
 
 
-        internal static DataTable ExecuteReader(string pcomando)
+        public static DataTable ExecuteReader(string pcomando)
         {
 
             try
             {
+                ManageConnection();
                 MSqlCommand.CommandText = pcomando;
 
                 DataTable mdt = new DataTable("tabla");
@@ -95,7 +99,7 @@ namespace DAL
             }
             finally
             {
-
+                ManageConnection();
             }
         }
 
@@ -206,7 +210,7 @@ namespace DAL
 
 
         #region Verificacion y creacion de ConnectionString
-        public static bool CheckAccess()
+        public  static bool CheckAccess()
         {
             try
             {
@@ -245,8 +249,10 @@ namespace DAL
             
 
             try
-            {
+            {   //grabo encriptado
                 EncryptorMan.EncryptAndSave(sqlConnBuilder.ConnectionString );
+                //seteo en la app
+                Conexion.ConnectionString = sqlConnBuilder.ConnectionString;
             }
             catch (Exception ex2)
             {

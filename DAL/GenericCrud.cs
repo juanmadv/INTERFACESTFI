@@ -10,16 +10,7 @@ namespace DAL
 {
     class GenericCrud
     {
-        //public static string ObtenerCampos(IRepository irepo)
-        //{
 
-        //    string campos = string.Empty;
-
-        //    //List<String> camposobj = irepo.GetCampos();
-        //    camposobj.ForEach(x => campos += x );
-        //    return campos;
-
-        //}
 
        public int Insert(IRepository irepo)
         {
@@ -40,7 +31,7 @@ namespace DAL
         #region Generar Sentencias
         private string InsertSentence(IRepository objeto)
         {
-            string Sentencia = "INSERT INTO " + objeto.Estructura.Tabla + Campos(objeto) +" Values (";
+            string Sentencia = "INSERT INTO " + objeto.Estructura.Tabla + "(" + Campos(objeto) +")"+" Values (";
 
 
             //Parametrice(objeto).Estructura.parametros.ForEach(x => Sentencia += "@" + x.ParameterName + ",");
@@ -56,13 +47,19 @@ namespace DAL
             return objeto;
         }
 
+        internal  string SelectSentence(IRepository objeto)
+        {
+            return   String.Format(@"SELECT {0} FROM {1}" ,Campos(objeto), objeto.Estructura.Tabla);
+        }
+
+
         private string Campos(IRepository pobjeto)
         {
             string campos = " ";
-            new ReflexAdapter().GetFields(pobjeto.Estructura.persistible).ForEach(x => campos += x + ",");
+            new ReflexAdapter().GetFields(pobjeto.Estructura.persistible).Where(x => x != "Id" ).ToList().ForEach(x => campos += x + ",");
             campos = campos.Remove(campos.Length - 1, 1);
-            campos = campos.Insert(0, "(");
-            campos = campos.Insert(campos.Length, ")");
+            //campos = campos.Insert(0, "(");
+            //campos = campos.Insert(campos.Length, ")");
             return campos;
         }
 

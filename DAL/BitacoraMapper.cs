@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
@@ -95,6 +96,39 @@ namespace DAL
             
         }
 
+
+        public  List<Bitacora> ListAll()
+        {
+            _datos.persistible = new Bitacora();
+            _datos.Tabla = "BITACORA";
+
+            DataTable dt = Acceso.ExecuteReader(gc.SelectSentence(this));
+
+            List<Bitacora> mlista = new List<Bitacora>();
+
+            foreach (DataRow item in dt.Rows)
+            {
+                mlista.Add(ValorizarEntidad(item));
+            }
+
+
+            return mlista;
+        }
+
+
+        private Bitacora ValorizarEntidad(DataRow dr)
+        {
+            Bitacora mbitacora = new Bitacora();
+
+            mbitacora.Descripcion = dr["Descripcion"].ToString();
+            mbitacora.Criticidad = int.Parse(dr["Criticidad"].ToString());
+            mbitacora.Fecha = DateTime.Parse(dr["Fecha"].ToString());
+            //mbitacora.IdUSer = int.Parse(dr["IdUSer"].ToString();
+            mbitacora.Host = dr["Host"].ToString();
+            //mbitacora.Descripcion = dr[""].ToString();
+            return mbitacora;
+
+        }
   
     }
 }
