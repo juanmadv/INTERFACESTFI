@@ -48,6 +48,9 @@
       },
       "BE/1.0.0": {
         "type": "project",
+        "dependencies": {
+          "Util": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/BE.dll": {}
         },
@@ -55,10 +58,24 @@
           "bin/placeholder/BE.dll": {}
         }
       },
+      "BLL/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "BE": "1.0.0",
+          "DAL": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/BLL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BLL.dll": {}
+        }
+      },
       "DAL/1.0.0": {
         "type": "project",
         "dependencies": {
-          "BE": "1.0.0"
+          "BE": "1.0.0",
+          "Util": "1.0.0"
         },
         "compile": {
           "bin/placeholder/DAL.dll": {}
@@ -71,6 +88,7 @@
         "type": "project",
         "dependencies": {
           "BE": "1.0.0",
+          "BLL": "1.0.0",
           "DAL": "1.0.0"
         },
         "compile": {
@@ -78,6 +96,15 @@
         },
         "runtime": {
           "bin/placeholder/SEC.dll": {}
+        }
+      },
+      "Util/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Util.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Util.dll": {}
         }
       }
     }
@@ -196,6 +223,11 @@
       "path": "../BE/BE.csproj",
       "msbuildProject": "../BE/BE.csproj"
     },
+    "BLL/1.0.0": {
+      "type": "project",
+      "path": "../BLL/BLL.csproj",
+      "msbuildProject": "../BLL/BLL.csproj"
+    },
     "DAL/1.0.0": {
       "type": "project",
       "path": "../DAL/DAL.csproj",
@@ -205,6 +237,11 @@
       "type": "project",
       "path": "../Security/SEC.csproj",
       "msbuildProject": "../Security/SEC.csproj"
+    },
+    "Util/1.0.0": {
+      "type": "project",
+      "path": "../Util/Util.csproj",
+      "msbuildProject": "../Util/Util.csproj"
     }
   },
   "projectFileDependencyGroups": {

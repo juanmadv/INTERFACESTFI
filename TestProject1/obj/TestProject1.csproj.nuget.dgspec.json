@@ -8,7 +8,38 @@
       "restore": {
         "projectUniqueName": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\BE\\BE.csproj",
         "projectName": "BE",
-        "projectPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\BE\\BE.csproj"
+        "projectPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\BE\\BE.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\Util\\Util.csproj": {
+                "projectPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\Util\\Util.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\BLL\\BLL.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\BLL\\BLL.csproj",
+        "projectName": "BLL",
+        "projectPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\BLL\\BLL.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\BE\\BE.csproj": {
+                "projectPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\BE\\BE.csproj"
+              },
+              "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\DAL\\DAL.csproj": {
+                "projectPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\DAL\\DAL.csproj"
+              }
+            }
+          }
+        }
       },
       "frameworks": {
         "net472": {}
@@ -24,6 +55,9 @@
             "projectReferences": {
               "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\BE\\BE.csproj": {
                 "projectPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\BE\\BE.csproj"
+              },
+              "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\Util\\Util.csproj": {
+                "projectPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\Util\\Util.csproj"
               }
             }
           }
@@ -43,6 +77,9 @@
             "projectReferences": {
               "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\BE\\BE.csproj": {
                 "projectPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\BE\\BE.csproj"
+              },
+              "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\BLL\\BLL.csproj": {
+                "projectPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\BLL\\BLL.csproj"
               },
               "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\DAL\\DAL.csproj": {
                 "projectPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\DAL\\DAL.csproj"
@@ -117,6 +154,16 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
+      }
+    },
+    "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\Util\\Util.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\Util\\Util.csproj",
+        "projectName": "Util",
+        "projectPath": "C:\\PERMANENTE\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\REPO_UAI\\OYPP\\TPFINAL\\INTERFACES\\Util\\Util.csproj"
+      },
+      "frameworks": {
+        "net472": {}
       }
     }
   }
