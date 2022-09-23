@@ -124,8 +124,8 @@ namespace Interfaces
             // StyleMAIN
             // 
             this.StyleMAIN.Owner = this;
-            this.StyleMAIN.Style = global::Interfaces.Properties.Settings.Default.StyleJuanma;
-            this.StyleMAIN.Theme = global::Interfaces.Properties.Settings.Default.ThemeJuanma;
+            this.StyleMAIN.Style = MetroFramework.MetroColorStyle.Silver;
+            this.StyleMAIN.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // metroToggle1
             // 
