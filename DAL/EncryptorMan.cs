@@ -43,7 +43,7 @@ namespace DAL
                 }
                 //ConfigurationManager.RefreshSection("connectionStrings");
 
-
+                 
                 if (section.ConnectionStrings.Count > 0)
 
                 {
