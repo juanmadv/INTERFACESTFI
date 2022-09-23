@@ -59,6 +59,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cargando.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cargando.Designer.cs">
+      <DependentUpon>Cargando.cs</DependentUpon>
+    </Compile>
     <Compile Include="Consultar Solicitudes Residente Seguridad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,12 +103,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UIConexionBD.cs">
+    <Compile Include="UIAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UIConexionBD.Designer.cs">
-      <DependentUpon>UIConexionBD.cs</DependentUpon>
+    <Compile Include="UIAdministrador.Designer.cs">
+      <DependentUpon>UIAdministrador.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Cargando.resx">
+      <DependentUpon>Cargando.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Consultar Solicitudes Residente Seguridad.resx">
       <DependentUpon>Consultar Solicitudes Residente Seguridad.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,8 +139,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UIConexionBD.resx">
-      <DependentUpon>UIConexionBD.cs</DependentUpon>
+    <EmbeddedResource Include="UIAdministrador.resx">
+      <DependentUpon>UIAdministrador.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
