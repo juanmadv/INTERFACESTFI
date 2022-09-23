@@ -29,7 +29,7 @@ namespace Interfaces
 
             try
             {
-                File.Delete(Directory.GetCurrentDirectory() + "//Interfaces.exe.config");
+              // File.Delete(Directory.GetCurrentDirectory() + "//Interfaces.exe.config");
             }
             catch (Exception ex)
             {
